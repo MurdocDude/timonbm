@@ -2,19 +2,21 @@ name: Object Storage Upload
 run-name: Upload to Yandex Cloud 🚀
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Upload files to Object Storage
-        id: s3-upload
-        uses: yc-actions/yc-obj-storage-upload@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+          node-version: 16
+      # Build
+      - run: npm ci
+      - run: npm run build
+      # Deploy
+      - uses: nekitcorp/yandex-storage-website-action@v2
+        with:
+          access-key-id: ${{ secrets.ACCESS_KEY_ID }}
+          secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
           bucket: ${{ secrets.BUCKET }}
-          root: ./public
-          include: |
-            *.html
-            *.js
-            package.json
-          exclude: |
-            **/*.ts
+          working-directory: dist
+          clear: true
