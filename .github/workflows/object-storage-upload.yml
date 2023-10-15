@@ -11,7 +11,4 @@ jobs:
         with:
           yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
           bucket: ${{ secrets.BUCKET }}
-          root: ./
-          include: |
-            *.html
-          exclude: |
+          root: ./public
