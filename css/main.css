@@ -262,7 +262,7 @@ textarea {
 }
 
 body {
-  background: black;
+  background: rgb(242,245,241);
   display: flex;
   align-items: center;
   justify-content: center;
