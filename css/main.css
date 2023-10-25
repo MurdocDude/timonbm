@@ -267,15 +267,15 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  overflow: hidden;
   color: white;
 }
-
-.container {
-  width: 33%;
+.responsive-img {
+  width: 100%;
+  height: auto;
 }
 
-.responsive {
-  max-width: 100%;
-  height: auto;
+.responsive-img img {
+  width: 100%;
 }
 
