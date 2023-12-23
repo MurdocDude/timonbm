@@ -1,5 +1,4 @@
-name: Object Storage Upload
-run-name: Upload to Yandex Cloud 🚀
+name: Build
 on: [push]
 jobs:
   deploy:
@@ -12,11 +11,3 @@ jobs:
       # Build
       - run: npm ci
       - run: npm run build
-      # Deploy
-      - uses: nekitcorp/yandex-storage-website-action@v2
-        with:
-          access-key-id: ${{ secrets.ACCESS_KEY_ID }}
-          secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
-          bucket: ${{ secrets.BUCKET }}
-          working-directory: dist
-          clear: true
